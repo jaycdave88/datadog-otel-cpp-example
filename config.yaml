@@ -1,0 +1,27 @@
+receivers:
+  jaeger:
+    protocols:
+      grpc:
+      thrift_compact:
+
+processors:
+  batch:
+
+extensions:  
+  health_check:
+
+exporters:
+  datadog:
+    env: otel
+    version: 1.0
+    tags: ["otel:true"]
+    api:
+      key: _API_KEY_
+
+service:
+  extensions: [health_check]
+  pipelines:
+    traces:
+      receivers: [jaeger]
+      processors: [batch]
+      exporters: [datadog]

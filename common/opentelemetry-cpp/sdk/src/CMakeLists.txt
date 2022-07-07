@@ -1,0 +1,8 @@
+add_subdirectory(common)
+add_subdirectory(trace)
+if(WITH_METRICS_PREVIEW)
+  add_subdirectory(metrics)
+endif()
+add_subdirectory(logs)
+add_subdirectory(version)
+add_subdirectory(resource)
